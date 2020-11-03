@@ -1,0 +1,11 @@
+<div class="team-card" *ngIf="team">
+    <div class="team-title">
+        {{teamIndex + 1 + ' - ' + team.name}}
+    </div>
+    <img width="300" [src]="team.imageURL" alt="" *ngIf="team.imageURL">
+    <div class="team-description">
+        {{team.country}}
+    </div>
+</div>
+<hr>
+<br>

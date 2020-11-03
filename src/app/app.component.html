@@ -4,7 +4,7 @@
        src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
-<div class="courses">
-  <app-course-card *ngFor="let course of courses"
-  [course]="course"></app-course-card>
+<div class="teams">
+  <app-team-card *ngFor="let team of teams; index as i"
+  [team]="team" [teamIndex]="i"></app-team-card>
 </div>
