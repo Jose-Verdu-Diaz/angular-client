@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Team } from '../model/team';
+import {TeamService} from '../team.service';
 
 @Component({
   selector: 'app-team-card',
@@ -8,15 +9,21 @@ import { Team } from '../model/team';
 })
 export class TeamCardComponent implements OnInit {
 
+  teams: Team[];
+
   @Input()
   team: Team;
 
   @Input()
   teamIndex: number;
 
-  constructor() { }
+  constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
+    this.getTeams();
   }
 
+  getTeams(): void {
+    this.teams = this.teamService.getTeams();
+  }
 }
