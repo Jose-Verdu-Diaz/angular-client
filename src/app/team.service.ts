@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Team } from './model/team';
 import { TEAMS } from '../db-data';
 import { Observable, of } from 'rxjs';
@@ -8,9 +9,13 @@ import { Observable, of } from 'rxjs';
 })
 export class TeamService {
 
-  constructor() { }
+  private teamsUrl = 'api/teams';  // URL to web api
+
+  constructor(private http: HttpClient,) { 
+
+    }
 
   getTeams(): Observable<Team[]> {
-    return of(TEAMS);
+    return this.http.get<Team[]>(this.teamsUrl)
   }
 }
