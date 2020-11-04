@@ -1,3 +1,12 @@
+<div>
+    <label>Team name:
+      <input #teamName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(teamName.value); teamName.value=''">
+      add
+    </button>
+</div>
 <div class="team-card" *ngIf="team">
     <div class="team-title">
         {{teamIndex + 1 + ' - ' + team.name}}

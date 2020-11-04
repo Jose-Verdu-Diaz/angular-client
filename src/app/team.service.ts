@@ -12,6 +12,10 @@ export class TeamService {
 
   private teamsUrl = 'api/teams';  // URL to web api
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient,) { 
 
     }
@@ -22,6 +26,13 @@ export class TeamService {
       .pipe(
         catchError(this.handleError<Team[]>('getTeams', []))
       );
+  }
+
+  /** POST: add a new hero to the server */
+  addTeam(team: Team): Observable<Team> {
+    return this.http.post<Team>(this.teamsUrl, team, this.httpOptions).pipe(
+      catchError(this.handleError<Team>('addTeam'))
+    );
   }
 
   /**

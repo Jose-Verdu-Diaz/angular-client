@@ -28,4 +28,12 @@ export class TeamCardComponent implements OnInit {
       .subscribe(teams => this.teams = teams);
     
   }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.teamService.addTeam({ name } as Team)
+      .subscribe(team => {
+        this.teams.push(team);
+      });
+  }
 }
